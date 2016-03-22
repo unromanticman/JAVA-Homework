@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Source{
+public class Source2 {
 	
 	private static int [] systemNumber;
-	private static int [] user = {1,2,3,4,5};
+	private static int [] user;
 	private  static int SIZE;
 	
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Source{
 		SIZE = scan.nextInt();
 		systemNumbeGenerate(SIZE);
 		//進入每輪的測試
-		while(round(SIZE)){};
+		while(round(SIZE));
 		//獲勝
 		System.out.print("WIN!");
 	}
@@ -69,7 +69,7 @@ public class Source{
 		for(int i=0;i < num;i++){
 			//初始化答案亂數
 			systemNumber[i] = pattern[i];
-			//System.out.print(pattern[i]) ; 假如要一開始不要顯示答案的話這行拿掉
+			System.out.print(pattern[i]) ; //假如要一開始不要顯示答案的話這行拿掉
 		}
 		System.out.print("初始化完成\n") ;
 	}
