@@ -1,0 +1,200 @@
+﻿Java 程式設計 講師 : 陳祥輝
+mail : hui@staff.pccu.edu.tw
+
+----------------------------------------------------------------------------------------------------
+先將 AmaterasUML_1.3.4.zip 解壓縮，至入 eclipse\plugin 內
+----------------------------------------------------------------------------------------------------
+	public static int maxminOfArray(int[] arry,boolean isMax) {
+		int maxmin=arry[0];
+		for(int i=0;i<arry.length;i++) {
+			if (isMax && arry[i]>maxmin || !isMax && arry[i]<maxmin)
+				maxmin=arry[i];				
+		}		
+		return maxmin;
+	}
+	
+	
+	public static void bubbleSort(int [] data, boolean isAsc) {
+		int tmp=data[0];
+		for (int i=0;i<data.length-1;i++) {
+			for (int j=0;j<data.length-1-i;j++) {
+				if (isAsc && data[j]>data[j+1]
+				|| !isAsc && data[j]<data[j+1]) {
+					tmp=data[j];
+					data[j]=data[j+1];
+					data[j+1]=tmp;
+				}
+			}
+		}
+	}
+----------------------------------------------------------------------------------------------------
+import java.util.Arrays;
+
+
+public class MyMain {
+
+	public static void main(String[] args) {
+//		pract01(); //使用static的寫法
+		
+	}
+
+	public  static void pract01() {
+		int[] A={10,100,30,50,12,60,33,70,25,90};
+		System.out.println(MyArray1.maxminOfArray(A, true));
+		System.out.println(MyArray1.maxminOfArray(A, false));
+		MyArray1.bubbleSort(A, true);
+		MyArray1.printArray(A);
+		System.out.println();
+		MyArray1.bubbleSort(Arrays.copyOf(A, A.length), false);
+		MyArray1.printArray(A);			
+	}
+}
+
+--------------------------------------------------
+
+public class MyArray1 {
+	
+	public static int maxminOfArray(int[] arry,boolean isMax) {
+		int maxmin=arry[0];
+		for(int i=0;i<arry.length;i++) {
+			if (isMax && arry[i]>maxmin || !isMax && arry[i]<maxmin)
+				maxmin=arry[i];				
+		}		
+		return maxmin;
+	}
+	
+	
+	public static void bubbleSort(int [] data, boolean isAsc) {
+		int tmp=data[0];
+		for (int i=0;i<data.length-1;i++) {
+			for (int j=0;j<data.length-1-i;j++) {
+				if (isAsc && data[j]>data[j+1]
+				|| !isAsc && data[j]<data[j+1]) {
+					tmp=data[j];
+					data[j]=data[j+1];
+					data[j+1]=tmp;
+				}
+			}
+		}
+	}
+	
+	public static void printArray(int [] arry) {
+		for (int i=0;i<arry.length;i++) {
+			System.out.print(arry[i]+"\t");
+		}
+	}
+	
+}
+
+
+----------------------------------------------------------------------------------------------------
+import java.util.Arrays;
+
+
+public class MyMain {
+
+	public static void main(String[] args) {
+//		pract01(); //使用static的寫法
+		pract02(); //使用non-static的寫法
+	}
+
+	public static void pract01() {
+		int[] A={10,100,30,50,12,60,33,70,25,90};
+		System.out.println(MyArray1.maxminOfArray(A, true));
+		System.out.println(MyArray1.maxminOfArray(A, false));
+		MyArray1.bubbleSort(A, true);
+		MyArray1.printArray(A);
+		System.out.println();
+		MyArray1.bubbleSort(Arrays.copyOf(A, A.length), false);
+		MyArray1.printArray(A);			
+	}
+
+	public static void pract02() {
+		int[] A={10,100,30,50,12,60,33,70,25,90};
+		int[] B={110,120,230,150,125,260,133,270,205,190};
+		MyArray2 myArrayA = new MyArray2(A);
+		MyArray2 myArrayB = new MyArray2(B);
+//		myArrayA.setArry(A);
+//		myArrayB.setArry(B);
+		System.out.println(myArrayA.maxminOfArray(true));
+		System.out.println(myArrayA.maxminOfArray(false));
+		System.out.println(myArrayB.maxminOfArray(true));
+		System.out.println(myArrayB.maxminOfArray(false));
+		myArrayA.printArray();
+		System.out.println();
+		myArrayB.printArray();
+	}
+}
+
+--------------------------------------------------
+
+public class MyArray2 {
+	
+	private int[] arry;
+
+	//constructor
+	public MyArray2(int[] arry) {
+		this.arry=arry;
+	}
+	
+//	public void setArry(int[] arry) {
+//		this.arry=arry;
+//	}
+	
+	public int maxminOfArray(boolean isMax) {
+		int maxmin=arry[0];
+		for(int i=0;i<arry.length;i++) {
+			if (isMax && arry[i]>maxmin || !isMax && arry[i]<maxmin)
+				maxmin=arry[i];				
+		}		
+		return maxmin;
+	}
+	
+	public void bubbleSort(boolean isAsc) {
+		int tmp=arry[0];
+		for (int i=0;i<arry.length-1;i++) {
+			for (int j=0;j<arry.length-1-i;j++) {
+				if (isAsc && arry[j]>arry[j+1]
+				|| !isAsc && arry[j]<arry[j+1]) {
+					tmp=arry[j];
+					arry[j]=arry[j+1];
+					arry[j+1]=tmp;
+				}
+			}
+		}
+	}
+	
+	public void printArray() {
+		for (int i=0;i<arry.length;i++) {
+			System.out.print(arry[i]+"\t");
+		}
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------

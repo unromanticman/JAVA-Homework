@@ -1,0 +1,7 @@
+public static long f3(long n)
+	{
+		if(n==3)
+			return n*(n-1)+(n-2);
+		else
+			return (n*(n-1)+(n-2))*f3(n-1);
+	}

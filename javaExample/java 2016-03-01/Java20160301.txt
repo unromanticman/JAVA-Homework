@@ -1,0 +1,160 @@
+﻿Java 程式設計 講師 : 陳祥輝
+mail : hui@staff.pccu.edu.tw
+
+----------------------------------------------------------------------------------------------------
+public class MyMain {
+
+	public static void main(String[] args) {
+		int x;
+		int y=20;
+		x=10;
+		System.out.println(x+y);
+	}
+}
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	static int x=10;  //類別或物件層級的變數，所有的method都看得到
+	static int y=20;  //類別或物件層級的變數，所有的method都看得到
+	
+	public static void main(String[] args) {
+		add();
+	}
+	
+	public static void add() {
+		System.out.println(x+y);		
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	public static void main(String[] args) {
+		add(10,30);
+		add(100,60);
+		add(110,55);
+		add(20,30);
+		add(120,130);
+	}
+	
+	public static void add(int x, int y) {
+	    //此處的x, y是屬於區域變數，只存活在此區塊內
+		System.out.println(x+y);		
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+	
+	public static void main(String[] args) {
+		add(10,30);
+		add(100,60);
+		add(110,55);       //兩個 int 的輸入參數
+		add(20,30.05d);    //一個 int，一個 double 的輸入參數
+		add(120,130,30);   //三個 int 的輸入參數
+		add("abc","def");  //兩個 String 的輸入參數
+	}
+	
+	//兩個 int 的輸入參數
+	public static void add(int x, int y) {
+		System.out.println(x+y);
+	}
+
+	//一個 int，一個 double 的輸入參數
+	public static void add(int x, double y) {
+		System.out.println(x+y);
+	}
+
+	//兩個 String 的輸入參數
+	public static void add(String x, String y) {
+		System.out.println(x+y);
+	}
+
+	//三個 int 的輸入參數	
+	public static void add(int x, int y, int z) {
+		System.out.println(x+y+z);
+	}
+}
+
+多載(Overloading)，相同函數名稱，但是
+(1) 參數個數不相同
+(2) 參數個數相同，但資料型態不完全相同
+【注意】與回傳的資料型態無關
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+	
+	public static void main(String[] args) {
+		System.out.println(add(10,30));
+		System.out.println(add(100,60));
+		System.out.println(add(110,55));
+		System.out.println(add(20,30.05d));
+		System.out.println(add(120,130,30));
+		System.out.println(add("abc","def"));
+	}
+	
+	public static int add(int x, int y) {
+		return (x+y);
+	}
+
+	public static double add(int x, double y) {
+		return (x+y);
+	}
+
+	public static String add(String x, String y) {
+		return (x+y);
+	}
+	
+	public static int add(int x, int y, int z) {
+		return (x+y+z);
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+	
+	public static void main(String[] args) {
+		System.out.println(add(10,30));
+		System.out.println(add(100,60));
+		System.out.println(add(110,55));
+		System.out.println(add(20,30.05d));
+		System.out.println(add(120,130,30));
+		System.out.println(add("abc","def"));
+	}
+	
+	public static int add(int x, int y) {
+		return (x+y);
+	}
+
+	public static double add(int x, double y) {
+		return (x+y);
+	}
+
+	public static String add(String x, String y) {
+		return (x+y);
+	}
+	
+	public static int add(int x, int y, int z) {
+		return (add(add(x,y),z));
+	}
+	
+	public static int add(int x, int y, int z, int a) {
+		return (add(add(x,y),add(z,a)));
+	}
+	
+	public static int add(int x, int y, int z, int a, int b) {
+		return (add(add(x,y,z),add(a,b)));
+	}
+	
+	public static int add(int x, int y, int z, int a, int b, int c) {
+		return (add(add(x,y,z),add(a,b,c)));
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------

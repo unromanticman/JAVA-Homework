@@ -1,0 +1,298 @@
+﻿Java 程式設計 講師 : 陳祥輝
+mail : hui@staff.pccu.edu.tw
+
+----------------------------------------------------------------------------------------------------
+先將 AmaterasUML_1.3.4.zip 解壓縮，至入 eclipse\plugin 內
+----------------------------------------------------------------------------------------------------
+StarUML
+https://sourceforge.net/projects/staruml/
+
+
+CASE tools (Computer Aided Software Engineering)
+Sybase PowerDesigner
+ER Win
+ER/Studio
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+	
+	public static void main(String[] args) {
+		Dog dog1 = new Dog();
+		Dog dog2 = new Dog();
+		dog1.setDogName("dog1");
+		dog2.setDogName("dog2");
+		dog1.run();
+		dog2.run();
+	}
+
+}
+
+--------------------
+
+public class Dog {
+
+	private String dogName="";
+	
+	public void setDogName(String name) {
+		dogName=name;
+	}
+
+	public void run() {
+		System.out.printf("%s is running...%n",dogName);
+	}	
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+	
+	public static void main(String[] args) {
+		Dog dog1 = new Dog();
+		Dog dog2 = new Dog();
+		dog1.setDogName("dog1");
+		dog2.setDogName("dog2");
+		dog1.run();
+		dog1.run();		
+		dog2.run();
+		System.out.println("dog1 : heartBeat="+dog1.getHeartBeat());
+		System.out.println("dog2 : heartBeat="+dog2.getHeartBeat());		
+	}
+
+}
+
+--------------------
+
+public class Dog {
+
+	private String dogName="";         //non-static變數 稱為物件變數
+	private static int heartBeat=72;   //    static變數 稱為類別變數
+	
+	public void setDogName(String name) {
+		dogName=name;
+	}
+
+	//non-static方法 稱為物件方法
+	public void run() {                
+		System.out.printf("%s is running...%n",dogName);
+		heartBeat++;
+	}
+
+	//non-static方法 稱為物件方法
+	public int getHeartBeat() {
+		return heartBeat;
+	}	
+	
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class Dog {
+
+	private String dogName="";         //non-static變數 稱為物件變數
+	private static int heartBeat=72;   //    static變數 稱為類別變數
+	private static boolean isDie=false;
+	
+	public void setDogName(String name) {
+		dogName=name;
+	}
+
+	//non-static方法 稱為物件方法
+	public void run() {                
+		System.out.printf("%s is running...%n",dogName);
+		heartBeat++;
+//		die();   //物件方法 可以使用 類別方法(變數)
+	}
+
+	//non-static方法 稱為物件方法
+	public int getHeartBeat() {
+		return heartBeat;
+	}	
+
+	//static方法 稱為類別方法
+	public static void die() {
+		isDie=true;
+//      getheartBeat();    //類別方法 不可以使用 物件方法(變數)		
+	}
+	
+	public static boolean isDie() {
+		return isDie;
+	}	
+}
+
+----------------------------------------------------------------------------------------------------
+【重要觀念】
+類別方法 不可以使用 物件方法和物件變數 (因為物件層級的是屬於各自獨立)
+物件方法   可以使用 類別方法和類別變數 (因為類別層級的是屬於共用)
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+	
+	public static void main(String[] args) {
+		Dog dog1 = new Dog();
+		Dog dog2 = new Dog();
+		dog1.setDogName("dog1");
+		dog2.setDogName("dog2");
+		dog1.run();
+		dog1.run();		
+		dog2.run();
+		System.out.println("dog1 : heartBeat="+dog1.getHeartBeat());
+		System.out.println("dog2 : heartBeat="+dog2.getHeartBeat());
+		dog1.die();
+		System.out.println("dos2 is :"+dog2.isDie());
+	}
+
+}
+
+--------------------
+
+public class Dog {
+
+	private String dogName="";         //non-static變數 稱為物件變數
+
+	public void setDogName(String dogName) {
+		this.dogName=dogName;
+	}
+
+	//non-static方法 稱為物件方法
+	public void run() {                
+		System.out.printf("%s is running...%n",dogName);
+		Heart.setHeartBeat(Heart.getHeartBeat()+1);
+	}
+
+	//non-static方法 稱為物件方法
+	public int getHeartBeat() {
+		return Heart.getHeartBeat();
+	}	
+
+	public void die() {
+		Heart.die();
+	}
+	
+	public boolean isDie() {
+		return Heart.isDie();
+	}
+}
+
+--------------------
+
+public class Heart {
+	private static int heartBeat=72;   //    static變數 稱為類別變數
+	private static boolean isDie=false;
+	
+	//static方法 稱為類別方法
+	public static void die() {
+		isDie=true;	
+	}
+	
+	public static boolean isDie() {
+		return isDie;
+	}
+
+	public static int getHeartBeat() {
+		return heartBeat;
+	}
+
+	public static void setHeartBeat(int heartBeat) {
+		Heart.heartBeat = heartBeat;
+	}
+	
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+	
+	public Dog dog1, dog2;
+	
+	public static void main(String[] args) {
+		MyMain myMain = new MyMain();
+		myMain.pract01();
+	}
+
+	
+	public void pract01() {
+		dog1 = new Dog();
+		dog2 = new Dog();
+		dog1.setDogName("dog1");
+		dog2.setDogName("dog2");
+		dog1.run();
+		dog1.run();		
+		dog2.run();
+		System.out.println("dog1 : heartBeat="+dog1.getHeartBeat());
+		System.out.println("dog2 : heartBeat="+dog2.getHeartBeat());
+		dog1.die();
+		System.out.println("dos2 is :"+dog2.isDie());		
+	}
+}
+
+--------------------
+
+public class Dog {
+
+	private String dogName="";         //non-static變數 稱為物件變數
+
+	public void setDogName(String dogName) {
+		this.dogName=dogName;
+	}
+
+	//non-static方法 稱為物件方法
+	public void run() {                
+		System.out.printf("%s is running...%n",dogName);
+		Heart.setHeartBeat(Heart.getHeartBeat()+1);
+	}
+
+	//non-static方法 稱為物件方法
+	public int getHeartBeat() {
+		return Heart.getHeartBeat();
+	}	
+
+	public void die() {
+		Heart.die();
+	}
+	
+	public boolean isDie() {
+		return Heart.isDie();
+	}
+}
+
+--------------------
+
+public class Heart {
+	private static int heartBeat=72;   //    static變數 稱為類別變數
+	private static boolean isDie=false;
+	
+	//static方法 稱為類別方法
+	public static void die() {
+		isDie=true;
+	}
+	
+	public static boolean isDie() {
+		return isDie;
+	}
+
+	public static int getHeartBeat() {
+		return heartBeat;
+	}
+
+	public static void setHeartBeat(int heartBeat) {
+		Heart.heartBeat = heartBeat;
+	}
+
+}
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+

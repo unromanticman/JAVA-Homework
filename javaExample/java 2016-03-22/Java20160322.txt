@@ -1,0 +1,211 @@
+﻿Java 程式設計 講師 : 陳祥輝
+mail : hui@staff.pccu.edu.tw
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	public static void main(String[] args) {
+		for (int i=1;i<=9;i++) {
+			for (int j=1;j<=9;j++){
+				System.out.printf("%d * %d = %d%n",i,j,i*j);
+			}
+			System.out.println();
+		}
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	public static void main(String[] args) {
+//		N2N(10);
+		N2NbyCol();
+	}
+
+	public static void N2N(int n) {
+		for (int i=1;i<=n;i++) {
+			for (int j=1;j<=n;j++){
+				System.out.printf("%d * %d = %d%n",i,j,i*j);
+			}
+			System.out.println();
+		}		
+	}
+	
+	public static void N2NbyCol() {
+		for (int i=1;i<=9;i=i+4) {
+			for (int j=1;j<=9;j++) {
+				for (int k=0;k<4 && (i+k)<=9;k++) {
+					System.out.printf("%d * %d = %d\t",(i+k),j,(i+k)*j);
+				}
+				System .out.println();
+			}
+			System.out.println();
+		}
+	}
+	
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	public static void main(String[] args) {
+		N2N();
+		N2N(9);
+		N2N(10,3);
+	}
+
+	public static void N2N() {
+		N2N(9);
+	}
+	
+	public static void N2N(int n) {
+		N2N(n,1);
+	}
+	
+	public static void N2N(int n,int nCol) {
+		for (int i=1;i<=n;i=i+nCol) {
+			for (int j=1;j<=n;j++) {
+				for (int k=0;k<nCol && (i+k)<=n;k++) {
+					System.out.printf("%d * %d = %d\t",(i+k),j,(i+k)*j);
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
+	}
+	
+}
+
+----------------------------------------------------------------------------------------------------
+	public static void pract01() {
+		String s="abcdefgabcdefg";
+		System.out.println(s);
+		System.out.println(s.charAt(0));
+		System.out.println(s.concat("XYZ"));
+		System.out.println(s.equals("abcdefgabcdef"));
+		System.out.println(s.startsWith("abc"));		
+		System.out.println(s.endsWith("efg"));
+		System.out.println(s.indexOf("abcd"));
+		System.out.println(s.indexOf("abcd",1));
+		System.out.println(s.indexOf("abcx"));		
+		System.out.println(s.isEmpty());
+		System.out.println(s.length());
+		System.out.println(s.substring(3));
+		System.out.println(s.substring(3,7));	
+	}
+----------------------------------------------------------------------------------------------------
+【產生一個四個位數的字串】例如:5981
+	public static String getRndStr1(int digits) {
+		String rnd="";
+		
+		return rnd;
+	}
+
+	public static String getRndStr2(int digits) {
+		String rnd="";
+		
+		return rnd;
+	}
+----------------------------------------------------------------------------------------------------
+【產生一個四個位數的字串】例如:5981
+	public static String getRndStr1(int digits) {
+		String rnd="";
+		for (int i=1;i<=4;i++) {
+//			rnd=rnd+(int)(Math.random()*10); //隱含轉換
+			rnd=rnd+Integer.toString((int)(Math.random()*10)); //強制轉換
+		}
+		return rnd;
+	}
+
+	public static String getRndStr2(int digits) {
+		String rnd="";
+		while (rnd.length()<4) {
+			rnd=rnd+Integer.toString((int)(Math.random()*10));		
+		}
+		
+		return rnd;
+	}	
+----------------------------------------------------------------------------------------------------
+【產生一個四個位數的字串，數字不可以重複】例如:5981
+	public static String getRndStr1(int digits) {
+		String rnd="",r="";
+		for (int i=1;i<=4;i++) {
+			r=Integer.toString((int)(Math.random()*10));
+			if (rnd.indexOf(r)==-1)
+				rnd=rnd+r; //強制轉換
+			else
+				i--;
+		}
+		return rnd;
+	}
+
+	public static String getRndStr2(int digits) {
+		String rnd="",r="";
+		while (rnd.length()<4) {
+			r=Integer.toString((int)(Math.random()*10));			
+			if (rnd.indexOf(r)==-1)
+				rnd=rnd+r; //強制轉換		
+		}
+		return rnd;
+	}
+----------------------------------------------------------------------------------------------------
+【產生一個四個位數的字串，數字不可以重複，且第一個數字不可為0】例如:5981
+
+	public static String getRndStr1(int digits) {
+		String rnd="",r="";
+		for (int i=1;i<=4 || rnd.length()<4;i++) {
+			r=Integer.toString((int)(Math.random()*10));
+			if (rnd.isEmpty() && !r.equals("0"))
+				rnd=rnd+r;
+			else if (!rnd.isEmpty() && rnd.indexOf(r)==-1)
+				rnd=rnd+r;
+		}
+		return rnd;
+	}
+
+	public static String getRndStr2(int digits) {
+		String rnd="",r="";
+		while (rnd.length()<4) {
+			r=Integer.toString((int)(Math.random()*10));			
+			if (rnd.isEmpty() && !r.equals("0"))
+				rnd=rnd+r;
+			else if (!rnd.isEmpty() && rnd.indexOf(r)==-1)
+				rnd=rnd+r;
+		}
+		return rnd;
+	}
+--------------------------------------------------
+	public static String getRndStr1(int digits) {
+		String rnd="",r="";
+		for (int i=1;i<=4 || rnd.length()<4;i++) {
+			r=Integer.toString((int)(Math.random()*10));
+			if (rnd.isEmpty() && !r.equals("0") 
+			 ||!rnd.isEmpty() && rnd.indexOf(r)==-1) 
+				rnd=rnd+r;
+		}
+		return rnd;
+	}
+
+	public static String getRndStr2(int digits) {
+		String rnd="",r="";
+		while (rnd.length()<4) {
+			r=Integer.toString((int)(Math.random()*10));			
+			if (rnd.isEmpty() && !r.equals("0") 
+			 ||!rnd.isEmpty() && rnd.indexOf(r)==-1) 
+				rnd=rnd+r;
+		}
+		return rnd;
+	}
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------

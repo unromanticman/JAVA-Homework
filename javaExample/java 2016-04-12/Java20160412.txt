@@ -1,0 +1,251 @@
+﻿Java 程式設計 講師 : 陳祥輝
+mail : hui@staff.pccu.edu.tw
+
+----------------------------------------------------------------------------------------------------
+4/19(週二)期中考 考試範圍至第七章結束
+【期中考注意事項】
+(1)座位分開坐，以中間走道開始坐，往兩邊跳一個位置
+(2)考試分筆試與實作兩部分:
+   筆試部分不得翻書與使用任何電子資料，不可上網
+   實作部分可以翻書與使用任何電子資料，不可上網
+(3)實作部分務必要依據所有的規定，包括所有的命名原則，否則不予計分   
+(4)切勿遲到、切勿作弊
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	public static void main(String[] args) {
+		pract01();
+		
+		int[][] A={{10,20,30,40},
+				   {50,60,70,80},
+				   {90,100,110,120}};
+		int[][] B={{100,200,300,400},
+				   {500,600,700,800},
+				   {900,1000,1100,1200}};
+	}
+
+	public static void pract01() {
+		int[][] a = {{1,2,3,4},
+				     {5,6,7,8},
+				     {9,10,11,12}};
+		String[][] b;
+		b = new String[3][4];
+		int [][] c;
+		c = new int[3][4];
+
+		System.out.println(c.length);
+		System.out.println(c[0].length);
+		System.out.println(c[1].length);
+		System.out.println(c[2].length);
+
+		for (int i=0;i<c.length;i++) {
+			for (int j=0;j<c[i].length;j++) {
+				c[i][j]=i*j;
+			}
+		}		
+	}
+
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	public static void main(String[] args) {
+//		pract01();
+		
+		int[][] X={{10,20,30,40},
+				   {50,60,70,80},
+				   {90,100,110,120}};
+		int[][] Y={{100,200,300,400},
+				   {500,600,700,800},
+				   {900,1000,1100,1200}};
+		
+		printArray(addArray(X,Y));
+		
+	}
+
+	public static void pract01() {
+		int[][] a = {{1,2,3,4},
+				     {5,6,7,8},
+				     {9,10,11,12}};
+		String[][] b;
+		b = new String[3][4];
+		int [][] c;
+		c = new int[3][4];
+
+		System.out.println(c.length);
+		System.out.println(c[0].length);
+		System.out.println(c[1].length);
+		System.out.println(c[2].length);
+
+		for (int i=0;i<c.length;i++) {
+			for (int j=0;j<c[i].length;j++) {
+				c[i][j]=i*j;
+			}
+		}		
+	}
+
+	public static int[][] addArray(int[][] A,int[][] B) {
+		int[][] R=new int[3][4];
+		for (int i=0;i<A.length;i++) {
+			for (int j=0;j<A[i].length;j++) {
+				R[i][j]=A[i][j]+B[i][j];
+			}
+		}
+		return R;
+	}
+	
+	public static void printArray(int[][] R) {
+		for (int i=0;i<R.length;i++) {
+			for (int j=0;j<R[i].length;j++) {
+				System.out.print(R[i][j]+"\t");
+			}
+			System.out.println();
+		}			
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+		int[][] X={{10,20,30},
+				   {50,60,70,80},
+				   {90,100,110,120},
+				   {130,140,}};
+		int[][] Y={{100,200,300,400},
+				   {500,600,800},
+				   {900,1000,1100,1200,1300}};
+----------------------------------------------------------------------------------------------------
+
+public class MyMain {
+
+	public static void main(String[] args) {
+//		pract01();  //基本的二維陣列宣告
+		
+		int[][] X={{10,20,30},
+				   {50,60,70,80},
+				   {90,100,110,120},
+				   {130,140,}};
+		int[][] Y={{100,200,300,400},
+				   {500,600,800},
+				   {900,1000,1100,1200,1300}};
+		
+		printArray(addArray(X,Y));
+		
+	}
+
+	public static void pract01() {
+		int[][] a = {{1,2,3,4},
+				     {5,6,7,8},
+				     {9,10,11,12}};
+		String[][] b;
+		b = new String[3][4];
+		int [][] c;
+		c = new int[3][4];
+
+		System.out.println(c.length);
+		System.out.println(c[0].length);
+		System.out.println(c[1].length);
+		System.out.println(c[2].length);
+
+		for (int i=0;i<c.length;i++) {
+			for (int j=0;j<c[i].length;j++) {
+				c[i][j]=i*j;
+			}
+		}		
+	}
+
+	public static int[][] addArray(int[][] A,int[][] B) {
+		int maxRow=Math.max(A.length, B.length);
+		int maxCol=Math.max(findMaxCol(A), findMaxCol(B));
+		int[][] R=new int[maxRow][maxCol];
+		for (int i=0;i<A.length;i++) {
+			for (int j=0;j<A[i].length;j++) {
+				R[i][j]=A[i][j]+B[i][j];
+			}
+		}
+		return R;
+	}
+	
+	public static void printArray(int[][] R) {
+		for (int i=0;i<R.length;i++) {
+			for (int j=0;j<R[i].length;j++) {
+				System.out.print(R[i][j]+"\t");
+			}
+			System.out.println();
+		}			
+	}
+
+	public static int findMaxCol(int[][] X) {
+		int maxCol=0;
+		for (int i=0;i<X.length;i++) {
+			if (maxCol<X[i].length)
+				maxCol=X[i].length;
+		}
+		return maxCol;
+	}
+}
+
+----------------------------------------------------------------------------------------------------
+	public static int[][] addArray(int[][] A,int[][] B) {
+		int maxRow=Math.max(A.length, B.length);
+		int maxCol=Math.max(findMaxCol(A), findMaxCol(B));
+		int[][] R=new int[maxRow][maxCol];
+		for (int i=0;i<A.length;i++) {
+			for (int j=0;j<A[i].length;j++) {
+				if (i<A.length && j<A[i].length && i<B.length && j<B[i].length) 
+					R[i][j]=A[i][j]+B[i][j];
+				else if (i<A.length && j<A[i].length)
+					R[i][j]=A[i][j]+0;
+				else if (i<B.length && j<B[i].length)
+					R[i][j]=0+B[i][j];
+			}
+		}
+		return R;
+	}
+	
+	
+	public static int[][] addArray(int[][] A,int[][] B) {
+		int maxRow=Math.max(A.length, B.length);
+		int maxCol=Math.max(findMaxCol(A), findMaxCol(B));
+		int[][] R=new int[maxRow][maxCol];
+		for (int i=0;i<maxRow;i++) {
+			for (int j=0;j<maxCol;j++) {
+				R[i][j]=(i<A.length && j<A[i].length? A[i][j] : 0)+
+						(i<B.length && j<B[i].length? B[i][j] : 0);
+			}
+		}
+		return R;
+	}	
+----------------------------------------------------------------------------------------------------
+【遞迴的重點】
+(1)找出一般式
+(2)在一般式中必有已知項與未知項，已知項由本層處理，未知項由下一個自己來處理
+(3)找到何時要停止
+----------------------------------------------------------------------------------------------------
+	public static int f1(int n) {
+		if (n==1)
+			return n;
+		else
+			return n+f1(n-1);
+	}
+
+	public static int f2(int n) {
+		if (n==2)
+			return n*(n-1);
+		else
+			return n*(n-1)+f2(n-1);
+	}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
